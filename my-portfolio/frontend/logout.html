@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logging out...</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="message">
+      <h2>Logging you out...</h2>
+      <p>Please wait a moment.</p>
+    </div>
+  </div>
+
+  <script>
+    // Remove login token
+    localStorage.removeItem("token");
+
+    // Optional: remove saved user
+    // localStorage.removeItem("testUser");
+
+    // Redirect after 0.5s
+    setTimeout(() => {
+      window.location.href = "login.html"; // must be in same folder
+    }, 500);
+  </script>
+</body>
+</html>

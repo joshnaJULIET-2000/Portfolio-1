@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+   <nav id="navbar">
+    <a href="index.html" class="nav-link protected">Home</a>
+    <a href="about.html" class="nav-link protected">About</a>
+    <a href="projects.html" class="nav-link protected">Projects</a>
+    <a href="contact.html" class="nav-link protected">Contact</a>
+    <button onclick="logout()">Logout</button>
+    </nav>
+  
+  
+
+  <section>
+    <h1>My Projects 📚</h1>
+    <div class="projects-container">
+      <div class="project-card">
+        <h2>Portfolio Website</h2>
+        <p>A personal portfolio showcasing my skills and experience.</p>
+        <a href="https://github.com/yourusername/portfolio" target="_blank">🔗 View on GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <h2>Product App</h2>
+        <p>A sample product listing and management application.</p>
+        <a href="https://github.com/joshnaJULIET-2000/Product-Application-Final.git" target="_blank">🔗 View on GitHub</a>
+      </div>
+    
+      <div class="project-card">
+        <h2>Study To-Do Tracker</h2>
+        <p>A simple to-do list app made for study tasks.</p>
+        <a href="https://github.com/joshnaJULIET-2000/Todo-Tracker.git" target="_blank">🔗 View on GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <h2>Profile Creation App</h2>
+        <p>A sample app for creating and managing profiles.</p>
+        <a href="https://github.com/joshnaJULIET-2000/joshna.git" target="_blank">🔗 View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function logout(){
+      localStorage.removeItem("token");
+      alert("Logged out!");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

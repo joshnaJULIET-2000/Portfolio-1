@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <!-- ✅ move Logout button inside nav -->
+    <button onclick="logout()">Logout</button>
+  </nav>
+   
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="name">Joshna John</span></h1>
+      <h2>I'm a <span class="profession">Web Developer</span></h2>
+      <img src="profile.jpeg" alt="Joshna John" class="hero-photo">
+    </div>
+  </section>
+
+  <script>
+    // ✅ global logout function
+    function logout() {
+      localStorage.removeItem("token"); // clear token
+      alert("Logged out!");
+      window.location.href = "login.html"; // redirect to login page
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // redirect to login if not logged in
+      if(!localStorage.getItem("token")){
+        window.location.href = "login.html";
+        return;
+      }
+
+      // professions animation
+      const professions = ["Web Developer", "Fullstack Developer", "MERN Developer", "UI/UX Designer"];
+      let i = 0;
+      const professionSpan = document.querySelector(".profession");
+
+      setInterval(() => {
+        i = (i + 1) % professions.length;
+        professionSpan.textContent = professions[i];
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>

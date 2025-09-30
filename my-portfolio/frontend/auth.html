@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-container {display: none;}
+    .form-container.active {display: block;}
+    section {text-align: center; padding: 30px;}
+  </style>
+</head>
+<body>
+  <section>
+    <h1 id="formTitle">Login</h1>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form-container active">
+      <input type="text" placeholder="Username" name="username" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <button type="submit">Login</button>
+      <p>Don’t have an account? <a href="#" onclick="switchForm('signup')">Signup here</a></p>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form-container">
+      <input type="text" placeholder="Username" name="username" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <button type="submit">Signup</button>
+      <p>Already have an account? <a href="#" onclick="switchForm('login')">Login here</a></p>
+    </form>
+  </section>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const formTitle = document.getElementById("formTitle");
+
+    // Switch between login/signup
+    function switchForm(type){
+      if(type === "signup"){
+        loginForm.classList.remove("active");
+        signupForm.classList.add("active");
+        formTitle.innerText = "Signup";
+      } else {
+        signupForm.classList.remove("active");
+        loginForm.classList.add("active");
+        formTitle.innerText = "Login";
+      }
+    }
+
+    // Handle Signup
+    signupForm.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const username = e.target.username.value;
+      const password = e.target.password.value;
+      localStorage.setItem("testUser", JSON.stringify({username, password}));
+      alert("Signup successful! Please login.");
+      switchForm("login");
+    });
+
+    // Handle Login
+    loginForm.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const username = e.target.username.value;
+      const password = e.target.password.value;
+      const savedUser = JSON.parse(localStorage.getItem("testUser"));
+
+      if(savedUser && username === savedUser.username && password === savedUser.password){
+        localStorage.setItem("token", "dummyToken"); // logged in
+        alert("Login Successful!");
+        window.location.href = "index.html"; // go to home
+      } else {
+        alert("Invalid credentials! Please signup first.");
+      }
+    });
+  </script>
+</body>
+</html>

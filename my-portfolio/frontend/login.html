@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form login"> 
+            <h2 class="title">Login</h2>
+            <form class="login-form" onsubmit="login(); return false;">
+                <input type="text" id="username" placeholder="Enter username" required>
+                <input type="password" id="password" placeholder="Enter password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            // save user if not exist
+            let savedUser = JSON.parse(localStorage.getItem("testUser"));
+            if(!savedUser) {
+                localStorage.setItem("testUser", JSON.stringify({username, password}));
+                savedUser = {username, password};
+                alert("Account created automatically. Logged in!");
+            }
+
+            if(savedUser.username === username && savedUser.password === password){
+                localStorage.setItem("token", "dummyToken"); // mark as logged in
+                alert("Login Successful!");
+                window.location.href = "index.html"; // redirect to home
+            } else {
+                alert("Invalid credentials!");
+            }
+        }
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a href="index.html" class="nav-link protected">Home</a>
+    <a href="about.html" class="nav-link protected">About</a>
+    <a href="projects.html" class="nav-link protected">Projects</a>
+    <a href="contact.html" class="nav-link protected">Contact</a>
+    <button onclick="logout()">Logout</button>
+   </nav>
+   
+  
+
+  <section>
+    <h1>Contact Me 📩</h1>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" name="name" required>
+      <input type="email" placeholder="Your Email" name="email" required>
+      <textarea placeholder="Message" name="message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", (e)=>{
+      e.preventDefault();
+      alert(`Message Sent!\nName: ${e.target.name.value}\nEmail: ${e.target.email.value}\nMessage: ${e.target.message.value}`);
+      e.target.reset();
+    });
+
+     function logout() {
+    localStorage.removeItem("token"); // clear token
+    alert("Logged out!");
+    window.location.href = "login.html"; // redirect to login page
+  }
+
+  // redirect to login if not logged in
+  if (!localStorage.getItem("token")) {
+    window.location.href = "login.html";
+  }
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <nav id="navbar">
+    <a href="index.html" class="nav-link protected">Home</a>
+    <a href="about.html" class="nav-link protected">About</a>
+    <a href="projects.html" class="nav-link protected">Projects</a>
+    <a href="contact.html" class="nav-link protected">Contact</a>
+    <button onclick="logout()">Logout</button>
+  </nav>
+    
+
+  <section class="about-section">
+    <div class="about-container">
+
+<div class="left-section">
+    <h1 class="about-me-heading">About Me</h1>
+    <img src="profile.jpeg" alt="Joshna John">
+    <p>Hey! I'm Joshna, passionate about tech...</p><br/>
+   <!-- Resume Button -->
+<button onclick="openAndDownload()">⬇️ Download CV</button>
+
+<script>
+function openAndDownload() {
+  // 1. Resume open (preview)
+  window.open('resume.pdf', '_blank');
+  
+  // 2. Resume download start
+  const link = document.createElement('a');
+  link.href = 'resume.pdf';
+  link.download = 'Joshna_Resume.pdf'; // save name
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
+  </div>
+</div>
+
+      <!-- Content -->
+      <div class="about-content">
+        <p>Hello! I am <strong>Joshna John</strong>, a final-year Computer Science student graduating in <strong>2026</strong>. I am passionate about <strong>Fullstack Development (MERN)</strong> and <strong>Web Development</strong>.</p>
+        
+        <h2>Education</h2>
+        <ul>
+          <li>BVoc Web Technology</li>
+          <li>Completed high school with focus on science and computer applications</li>
+        </ul>
+
+        <h2>Internship Experience</h2>
+        <p>I completed internships at <strong>KSIE Ellor</strong> and <strong>Lulu Warehouse, Asokapuram</strong>. These experiences gave me exposure to practical workflows in technology and logistics.</p>
+
+       <h2>Skills</h2>
+<ul>
+  <li>Tools & Platforms: Adobe, Wix, WordPress, Joomla</li>
+  <li>Frontend: HTML, CSS, React.js,JavaScript</li>
+  <li>Backend: Node.js, Express.js</li>
+  <li>Database: SQL, MongoDB</li>
+  <li>Problem-solving and quick learning</li>
+</ul>
+
+      </div>
+    </div>
+  </section>
+</body>
+</html>
